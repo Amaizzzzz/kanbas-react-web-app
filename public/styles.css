@@ -233,4 +233,16 @@ body *{
                 width: 75px;
               }
               
-              
+.vertical-column {
+   padding: 20px;
+   border: none; /* 或者 border-width: 0; */
+   background-color: #f9f9f9;
+   margin-bottom: 20px;
+}
+
+
+.list-group-item {
+   background-color: #f0f0f0;
+   color: black;
+   margin-bottom: 5px;
+}
