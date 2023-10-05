@@ -13,6 +13,9 @@
     <div class="wd-flex-row-container">
         <div class="wd-bg-color-black d-none d-md-block">
             <ul class="wd-kanbas-navigation">
+                <li style="display: flex; justify-content: center; align-items: center;">
+                    <img src="../../../../images/logo_NEU.jpg" alt="Northeastern Huskies Logo" style="width: 45px; height: 45px; margin: 0 0 5px 0;">
+                </li>
                 <li><a href="/Kanbas/Account/Profile/screen.html"  class="account-icon">
                     <i class="fas fa-user-circle" style="color: #d3d3d3;"></i>
                     Account
@@ -31,7 +34,7 @@
                 </a>
                 </li>
                 <li><a href="#">
-                    <i class="fa-solid fa-inbox"></i>
+                    <i class="fas fa-envelope"></i>
             
                     Inbox
                 </a>
@@ -45,7 +48,7 @@
                     Studio
                 </a></li>
                 <li><a href="#">
-                    <i class="fa-regular fa-comment"></i>
+                    <i class="fa-regular fa-comments"></i>
                     Commons
                 </a></li>
                 <li> <a href="#">
@@ -56,19 +59,22 @@
             </ul>
         </div>
   
-          <div class="w-100 custom-breadcrumb"> <!-- 这个类确保面包屑导航占据整个宽度 -->
-            <div class="d-flex align-items-center">
-                <i class="fas fa-bars text-danger mr-3" style="margin-right: 15px;"></i>
+          <div class="w-100 custom-breadcrumb"> 
+            <div class="d-flex align-items-center" style="margin-top: 12px;">
+                <i class="fas fa-bars text-danger mr-3" style="margin-left: 12px; "></i>
                 <ol class="breadcrumb custom-breadcrumb mb-0">
                   <li class="breadcrumb-item"><a href="#">CS5610.11744.30</a></li>
                   <li class="breadcrumb-item active" aria-current="page">  Assignments</li>
                 </ol>
               </div>
-            <hr/> <!-- 横线 -->
+              <div style="margin-top: -9px; margin-left: 10px;">
+                <hr/> 
+              </div>
           <div class="d-flex flex-row">
   
             <div>
               <ul class="wd-course-navigation">
+                <li class="text-muted" style="font-size: small; font-style: italic;">2023.fall.CS5610</li>
                 <li><a href="/Kanbas/Courses/Home/home.html">Home</a></li>
                 <li><a href="/Kanbas/Courses/Modules/screen.html">Modules</a></li>
                 <li><a href="#">Piazza</a></li>
@@ -166,9 +172,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Submission Type and Online Entry Options -->
-                <div class="mb-3 row">
-                    <!-- Submission Type -->
+                <div class="mb-3 row "> 
                     <label for="submissionType" class="col-sm-2 col-form-label text-end">Submission Type</label>
                     <div class="col-sm-4">
                         <select class="form-control custom-select mb-2" id="submissionType">
@@ -178,38 +182,42 @@
                 
                         <!-- Online Entry Options -->
                         <label class="form-label">Online Entry Options</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="textEntry">
-                            <label class="form-check-label" for="textEntry">Text Entry</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="websiteURL">
-                            <label class="form-check-label" for="websiteURL">Website URL</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="mediaRecordings">
-                            <label class="form-check-label" for="mediaRecordings">Media Recordings</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="studentAnnotations">
-                            <label class="form-check-label" for="studentAnnotations">Student Annotations</label>
-                        </div>
+                        <div class=" border rounded p-3">
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="textEntry">
+                                <label class="form-check-label" for="textEntry">Text Entry</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="websiteURL">
+                                <label class="form-check-label" for="websiteURL">Website URL</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mediaRecordings">
+                                <label class="form-check-label" for="mediaRecordings">Media Recordings</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="studentAnnotations">
+                                <label class="form-check-label" for="studentAnnotations">Student Annotations</label>
+                            </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="fileuploads">
-                            <label class="form-check-label" for="fileuploads">File Uploads</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="fileuploads">
+                                <label class="form-check-label" for="fileuploads">File Uploads</label>
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <!-- Left Column -->
-                    <div class="col-md-3">
+                    <div class="col-md-2 col-form-label text-end">
                         <label for="assignTo">Assign</label>
                     </div>
                     
                     <!-- Right Column -->
-                    <div class="col-md-9">
+                    <div class="col-md-9 border rounded p-3" style="margin-left: 1%;">
                         <div class="mb-2">
                             <strong>Assign To</strong>
                         </div>
@@ -218,48 +226,50 @@
                             <label for="assignToEveryone">Everyone</label>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-2">
+                            <div>
                                 <label for="dueDate">Due</label>
                                 <input type="date" class="form-control" id="dueDate">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="availableFromDate">Available from</label>
+                                <input type="date" class="form-control" id="availableFromDate">
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="untilDate">Until</label>
                                 <input type="date" class="form-control" id="untilDate">
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <label for="availableFromDate">Available from</label>
-                            <input type="date" class="form-control" id="availableFromDate">
+                            
                         </div>
                     </div>
                 </div>
 
 
                 <div class="row mb-3">
-                    <div class="col-md-3"></div> <!-- 空的左列，与上面的标签列对齐 -->
+                    <div class="col-md-2"></div> 
                     <div class="col-md-9">
                         <button class="btn btn-secondary w-100">
                             <i class="fas fa-plus"></i> ADD
                         </button>
                     </div>
                 </div>
-
-                <hr class="mt-5 mb-4"> <!-- 横线，上下都有一些间距 -->
-
+                <div style="margin-top: 5%;">
+                    
+                </div>
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <input type="checkbox" id="notifyChange" name="notifyChange">
                         <label for="notifyChange">Notify user that this box has changed</label>
                     </div>
-                    <!-- <div class="col-md-6 text-end">
-                        <button class="btn btn-light">Cancel</button>
-                        <button class="btn btn-danger">Save</button>
-                    </div> -->
                     <div class="col-md-6 text-end">
                         <a href="/Kanbas/Courses/Assignments/screen.html" class="btn btn-light">Cancel</a>
                         <a href="/Kanbas/Courses/Assignments/screen.html" class="btn btn-danger">Save</a>
                     </div>
                 </div>
+
+                <hr class="mt-5 mb-4"> 
+
                 </div>
 
                 

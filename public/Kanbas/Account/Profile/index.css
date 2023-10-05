@@ -49,11 +49,23 @@
 }
 
 .float-end {
-    position: absolute; /* 使用绝对定位 */
-    top: 10px; /* 距离容器顶部的距离 */
-    right: 10px; /* 距离容器右侧的距离 */
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
 }
 
+.red-link {
+    color: red;
+}
+
+.no-underline {
+    text-decoration: none !important;
+   
+}
+
+.red-icon {
+    color: red;
+}
 
 
 

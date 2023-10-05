@@ -246,3 +246,8 @@ body *{
    color: black;
    margin-bottom: 5px;
 }
+
+.gray-text-small {
+   color: gray;
+   font-size: 14px; 
+}
