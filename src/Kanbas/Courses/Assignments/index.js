@@ -33,13 +33,14 @@ function Assignments() {
               <PiDotsSixVertical className="wd-icon" />
               <GoTriangleRight className="wd-icon" />
             </div>
-
+            
             <div className="d-flex flex-column align-items-start me-auto">
-              <h5 className="mb-0 text-left">{assignment.title}</h5>
-              <p className="mb-0 text-left pl-0">{assignment.details}</p>
-            </div>
 
-            <div>
+              <div className="d-flex flex-column align-items-start me-auto">
+                <h5 className="mb-0 text-left">{assignment.title}</h5>
+                <p className="mb-0 text-left pl-0">{assignment.details}</p>
+              </div>
+              <div>
               <span className="badge bg-primary me-2">
                 <FaFileAlt /> {assignment.type}
               </span>
@@ -53,6 +54,7 @@ function Assignments() {
                 <FaStopwatch /> {assignment.duration || "No time limit"}
               </span>
             </div>
+            </div>
 
             <div>
               <AiFillCheckCircle className="wd-icon" />
@@ -61,7 +63,10 @@ function Assignments() {
               <BiDotsVerticalRounded className="wd-icon" />
               <FaEllipsisV className="wd-icon" />
             </div>
+
+           
           </div>
+       
         </Link>
       ))}
 
