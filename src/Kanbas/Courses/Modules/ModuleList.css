@@ -1,0 +1,100 @@
+.module-list-container {
+    .list-group {
+        border-top: 1px solid #ddd;
+        margin-top: 15px;
+    }
+
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .input-section .module-inputs {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        gap: 10px;
+    }
+
+    .input-section .module-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .course-section .course-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 70%;
+    }
+
+    .module-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .list-group-item h3 {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 0;
+    }
+
+    .list-group-item h3::before {
+        content: "▶"; 
+        display: inline-block;
+        margin-right: 10px;
+        transition: transform 0.3s;
+    }
+
+    .list-group-item h4 {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .list-group-item p {
+        margin: 0;
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* Button Styles */
+
+    .module-buttons button {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-right: 10px;
+        outline: none;
+    }
+
+    .update-module-btn {
+        background-color: #007bff;  
+        color: white;
+    }
+
+    .delete-module-btn {
+        background-color: red;     
+        color: white;
+    }
+
+    .add-module-btn {
+        background-color: #28a745; 
+        color: white;
+    }
+
+    .edit-module-btn {
+        background-color: green;  
+        color: white;
+    }
+}

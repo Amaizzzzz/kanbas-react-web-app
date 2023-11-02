@@ -1,80 +1,86 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { deleteAssignment } from "./assignmentsReducer"; // Adjust to your real path
 import db from "../../Database";
-import { FaFileAlt, FaCalendar, FaListOl, FaStopwatch } from "react-icons/fa";
+import { FaFileAlt, FaCalendar, FaListOl, FaStopwatch, FaTrash } from "react-icons/fa";
 import { PiDotsSixVertical } from "react-icons/pi";
 import { GoTriangleRight } from "react-icons/go";
-import { AiFillCheckCircle } from "react-icons/ai";
+import { AiFillCheckCircle, AiOutlinePlus } from "react-icons/ai";
 import { RiArrowDownSFill } from "react-icons/ri";
-import { AiOutlinePlus } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaEllipsisV } from "react-icons/fa";
-import { GoTriangleDown } from "react-icons/go";
-import { BsPlus } from "react-icons/bs";
-import { HiOutlineEllipsisVertical } from "react-icons/hi2";
+import "./index.css";
 
 function Assignments() {
+  const [showDialog, setShowDialog] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState(null);
+
+  const dispatch = useDispatch();
   const { courseId } = useParams();
-  const assignments = db.assignments;
+  const navigate = useNavigate();
+
+  const assignments = useSelector((state) => state.assignments.assignments);
   const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === courseId);
-    return (
-      <div>
-        <h2>Assignments for course {courseId}</h2>
-        <div className="list-group">
-        {courseAssignments.map((assignment) => (
-        <Link
-          key={assignment._id}
-          to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-          className="list-group-item"
-        >
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex wd-icon-group">
-              <PiDotsSixVertical className="wd-icon" />
-              <GoTriangleRight className="wd-icon" />
-            </div>
-            
-            <div className="d-flex flex-column align-items-start me-auto">
+    (assignment) => assignment.course === courseId
+  );
 
-              <div className="d-flex flex-column align-items-start me-auto">
-                <h5 className="mb-0 text-left">{assignment.title}</h5>
-                <p className="mb-0 text-left pl-0">{assignment.details}</p>
-              </div>
-              <div>
-              <span className="badge bg-primary me-2">
-                <FaFileAlt /> {assignment.type}
-              </span>
-              <span className="badge bg-secondary me-2">
-                <FaCalendar /> {assignment.deadline}
-              </span>
-              <span className="badge bg-info me-2">
-                <FaListOl /> {assignment.points} points
-              </span>
-              <span className="badge bg-warning">
-                <FaStopwatch /> {assignment.duration || "No time limit"}
-              </span>
-            </div>
-            </div>
+  const handleDeleteClick = (assignmentId) => {
+    setSelectedAssignment(assignmentId);
+    setShowDialog(true);
+  };
 
-            <div>
-              <AiFillCheckCircle className="wd-icon" />
-              <RiArrowDownSFill className="wd-icon" />
-              <AiOutlinePlus className="wd-icon" />
-              <BiDotsVerticalRounded className="wd-icon" />
-              <FaEllipsisV className="wd-icon" />
-            </div>
+  const confirmDelete = () => {
+    dispatch(deleteAssignment(selectedAssignment));
+    setSelectedAssignment(null);
+    setShowDialog(false);
+  };
 
-           
-          </div>
-       
-        </Link>
-      ))}
-
-
+  return (
+    <div className="assignment-container">
+      <div className="assignment-top-section">
+        <input 
+          type="text" 
+          placeholder="Search for Assignment" 
+          className="assignment-search"
+        />
+        <div className="assignment-action-buttons">
+          <button className="btn-group-btn">
+            <AiOutlinePlus />
+            Group
+          </button>
+          <button className="btn-assignment" onClick={() => navigate(`/Kanbas/Courses/${courseId}/Assignments/New`)}>
+            <AiOutlinePlus />
+            Assignment
+          </button>
+          <button className="btn-three-dots">
+            <FaEllipsisV />
+          </button>
         </div>
       </div>
-    );
-    
-  }
-    
+      <div className="list-group">
+        {courseAssignments.map((assignment) => (
+          <div key={assignment._id} className="assignment-list-item">
+            <Link to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}>
+              {assignment.title}
+            </Link>
+            <button className="btn-delete" onClick={() => handleDeleteClick(assignment._id)}>
+              <FaTrash />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {showDialog && (
+        <div className="delete-dialog">
+          <p>Are you sure you want to delete this assignment?</p>
+          <button onClick={confirmDelete}>Yes</button>
+          <button onClick={() => setShowDialog(false)}>No</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default Assignments;
