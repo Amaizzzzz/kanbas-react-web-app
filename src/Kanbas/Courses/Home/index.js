@@ -83,8 +83,11 @@ function Home() {
                 Grade Assignment 1
               </a>{" "}
               <br /> 100 points - Sep 18 at 11:59pm
+            
             </span>
+            
             <span>
+            <br></br>
               <FaExclamationCircle />{" "}
               <a href="#" style={todoItemStyle}>
                 Grade Assignment 2
