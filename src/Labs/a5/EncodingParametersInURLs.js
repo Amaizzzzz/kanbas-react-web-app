@@ -21,7 +21,8 @@ function EncodingParametersInURLs() { // Declaration of the EncodingParametersIn
 
   // Async function to fetch the sum of 'a' and 'b' from a server.
   const fetchSum = async (a, b) => {
-    const response = await axios.get(`https://kanbas-node-server-app-gucen.onrender.com/add/${a}/${b}`); // Makes an HTTP GET request to add 'a' and 'b'.
+    const response = await axios.get(`https://kanbas-node-server-app-gucen.onrender.com/a5/add/${a}/${b}`); // Makes an HTTP GET request to add 'a' and 'b'.
+    console.log("res,data: ", response.data);
     setResult(response.data); // Updates the 'result' state variable with the response data.
   };
 

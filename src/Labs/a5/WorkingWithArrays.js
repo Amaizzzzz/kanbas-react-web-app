@@ -41,7 +41,7 @@ function WorkingWithArrays() {
 
       const updateDescription = async (id) => {
         try {
-            await axios.patch(`https://kanbas-node-server-app-gucen.onrender.com/todos/${id}/description`, { description });
+            await axios.patch(`https://kanbas-node-server-app-gucen.onrender.com/a5/todos/${id}/description`, { description });
             // Handle success
         } catch (error) {
             // Handle error
@@ -50,7 +50,7 @@ function WorkingWithArrays() {
 
     const updateCompleted = async (id) => {
         try {
-            await axios.patch(`https://kanbas-node-server-app-gucen.onrender.com/todos/${id}/completed`, { completed });
+            await axios.patch(`https://kanbas-node-server-app-gucen.onrender.com/a5/todos/${id}/completed`, { completed });
             // Handle success
         } catch (error) {
             // Handle error
