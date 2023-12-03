@@ -4,7 +4,7 @@ function AssignmentUpdater() {
     const [score, setScore] = useState(0); // 0 is the initial value
     const [completed, setCompleted] = useState(false);
 
-    const baseUrl = "http://localhost:4000";
+    const baseUrl = "http://kanbas-node-server-app-gucen.onrender.com";
 
     const handleScoreChange = (e) => {
         setScore(e.target.value);
