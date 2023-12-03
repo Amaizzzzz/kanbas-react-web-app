@@ -1,7 +1,7 @@
 [
   {
     "_id": "M101",
-    "name": "Foundations of Computer Science and Programming",
+    "name": "Foundations of Computer Science",
     "description": "This course provides a solid foundation in computer science and programming. Students will begin with an introduction to Python programming, covering variables, data types, and control structures. Subsequently, they will delve into data structures, algorithms, and object-oriented programming principles. The course also explores different software development methodologies and introduces database management and SQL for data retrieval and manipulation.",
     "course": "CS5001",
     "lessons": [
