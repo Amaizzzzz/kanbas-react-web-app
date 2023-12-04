@@ -1,46 +1,32 @@
 import axios from "axios";
+const API_BASE = process.env.REACT_APP_API_BASE;
+;
 
-const client = axios.create({
-  baseURL: "http://localhost:4000/api",
-  withCredentials: true,
-});
+const COURSES_URL = `${API_BASE}/api/courses`;
 
-export const fetchMyCourses = async () => {
-  // const promise = axios.get("http://localhost:4000/api/courses");
-  // promise.then((response) => {
-  //   setCourses(response.data);
-  // });
+export const fetchCourses = async()=>{
+  const response =await axios.get(`${COURSES_URL}`);
+ return response.data;
 
-  const response = await client.get("/courses");
+};
+export const deleteCourse = async(id)=>{
+  const response =await axios.delete(`${COURSES_URL}/${id}`);
   return response.data;
 };
 
-export const fetchAllCourses = async () => {
-  const response = await client.get("/courses/all");
+export const updateCourse = async(course)=>{
+  const response = await axios.put(`${COURSES_URL}/${course._id}`,course);
   return response.data;
-};
+}
 
-export const fetchCourse = async (id) => {
-  const response = await client.get(`/courses/${id}`);
-  return response.data;
-};
 
-export const deleteCourse = async (id) => {
-  const response = await axios.delete(
-    `http://localhost:4000/api/courses/${id}`
-  );
-  return response.data;
-};
 
-export const updateCourse = async (course) => {
-  const response = await axios.put(
-    `http://localhost:4000/api/courses/${course._id}`,
-    course
-  );
+export const addCourse = async(course)=>{
+  const response = await axios.post(`${COURSES_URL}`,course);
   return response.data;
-};
+}
 
-export const addCourse = async (course) => {
-  const response = await client.post("/courses", course);
-  return response.data;
-};
+export const fetchCourse = async(id)=>{
+    const response = await axios.get(`${COURSES_URL}/${id}`);
+    return response.data;
+}

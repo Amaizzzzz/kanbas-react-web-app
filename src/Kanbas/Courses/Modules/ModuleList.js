@@ -1,57 +1,102 @@
-import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as client from "./client";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+  setModules,
+
+} from "./modulesReducer";
+import * as client from "./clients.js";
+import "./ModuleList.css";
+
 
 function ModuleList() {
+
+
+  
   const { courseId } = useParams();
-  const [modules, setModules] = useState([]);
-  const [module, setModule] = useState({});
-  // const modules = db.modules;
-
-  const addModule = async () => {
-    const newModule = await client.addModule(courseId, module);
-    setModules([newModule, ...modules]);
-  };
-
-  const fetchModules = async () => {
-    const modules = await client.findModulesForCourse(courseId);
-    setModules(modules);
-  };
-
   useEffect(() => {
-    fetchModules();
-  }, []);
+    client.findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+    );
+  }, [courseId]);
 
+  const handleAddModule = () => {
+    client.createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+  const handleDeleteModule = (moduleId) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+  const handleUpdateModule = async () => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
+
+
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
   return (
-    <ul className="list-group">
-      <li className="list-group-item">
-        <button onClick={addModule}>Add</button>
-        <input
-          value={module.name}
-          onChange={(e) => setModule({ ...module, name: e.target.value })}
-          className="form-control"
-          placeholder="Module Name"
-        />
-      </li>
-      {modules
-        .filter((module) => module.course === courseId)
-        .map((module, index) => (
-          <li key={index} className="list-group-item">
-            <h3>{module.name}</h3>
-            <p>{module.description}</p>
-            {module.lessons && (
-              <ul className="list-group">
-                {module.lessons.map((lesson, index) => (
-                  <li key={index} className="list-group-item">
-                    <h4>{lesson.name}</h4>
-                    <p>{lesson.description}</p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-    </ul>
+    <div className="module-list-container">
+      <ul className="list-group">
+        <li className="list-group-item input-section">
+          <div className="module-inputs">
+            <input
+              value={module.name}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, name: e.target.value }))
+              }
+            />
+            <textarea
+              value={module.description}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, description: e.target.value }))
+              }
+            />
+          </div>
+          <div className="module-buttons">
+            <button className="update-module-btn"
+              onClick={handleUpdateModule}>
+              Update
+            </button>
+            <button className="add-module-btn"
+              onClick={handleAddModule}>
+              Add
+            </button>
+          </div>
+        </li>
+        {modules
+          .filter((module) => module.course === courseId)
+          .map((module, index) => (
+            <li key={index} className="list-group-item course-section">
+              <div className="course-info">
+                <h3>{module.name}</h3>
+                <p>{module.description}</p>
+              </div>
+              <div className="module-buttons">
+                <button className="delete-module-btn"
+                  onClick={() => handleDeleteModule(module._id)}>
+                  Delete
+                </button>
+                <button className="edit-module-btn"
+                  onClick={() => dispatch(setModule(module))}>
+                  Edit
+                </button>
+              </div>
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 }
 export default ModuleList;
