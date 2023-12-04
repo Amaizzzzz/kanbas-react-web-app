@@ -22,12 +22,11 @@ function Account() {
 
 
   const fetchAccount = async () => {
-    console.log("fetchAccount");
     const account = await client.account();
-    console.log("account");
-    console.log(account);
     setAccount(account);
   };
+
+  
   useEffect(() => {
     if (id) {
       findUserById(id);
@@ -63,10 +62,10 @@ function Account() {
             <option value="FACULTY">Faculty</option>
             <option value="STUDENT">Student</option>
           </select>
-          <button onClick={save}>
+          <button onClick={save} className="btn btn-primary my-2">
                 Save
             </button>
-            <button onClick={signout}>
+            <button onClick={signout} className="btn btn-danger my-2">
                 Signout
             </button>
             <Link to="/project/admin/users" className="btn btn-warning w-100">

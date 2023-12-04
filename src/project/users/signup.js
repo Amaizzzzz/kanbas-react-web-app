@@ -11,17 +11,9 @@ function Signup() {
       await client.signup(credentials);
       navigate("/project/account");
     } catch (err) {
-      // Check if err.response exists before accessing err.response.data
-      if (err.response && err.response.data) {
-        setError(err.response.data.message);
-      } else {
-        // Handle other types of errors (like network errors)
-        setError("An error occurred. Please try again.");
-        console.error(err); // Log the error for debugging purposes
-      }
+      setError(err.response.data.message);
     }
   };
-  
   return (
     <div>
       <h1>Signup</h1>
@@ -36,7 +28,7 @@ function Signup() {
         onChange={(e) => setCredentials({
           ...credentials,
           password: e.target.value })} />
-      <button onClick={signup}>
+      <button onClick={signup} className="btn btn-primary my-2">
         Signup
       </button>
     </div>
