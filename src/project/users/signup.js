@@ -9,7 +9,7 @@ function Signup() {
   const signup = async () => {
     try {
       await client.signup(credentials);
-      navigate("/project/account");
+      navigate("/project/users/account");
     } catch (err) {
       // Check if err.response exists before accessing err.response.data
       if (err.response && err.response.data) {
