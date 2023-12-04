@@ -5,7 +5,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-export const BASE_API = 'http://localhost:4000/api' || process.env.REACT_APP_API_BASE;
+export const BASE_API = "https://kanbas-node-server-app-gucen-320c2b70816d.herokuapp.com/api"|| 'http://localhost:4000/api'  ;
 export const USERS_API = `${BASE_API}/users`;
 export const signin = async (credentials) => {
   console.log(USERS_API)
